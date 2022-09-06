@@ -45,7 +45,7 @@ int MinSumInRows (int[,] matrix)
         if (sum < minSum || minSum == 0)
         {
             minSum = sum;
-            rowCount++;
+            rowCount = i + 1;
         }
         sum = 0;
     }
@@ -55,9 +55,13 @@ int MinSumInRows (int[,] matrix)
 Console.Clear();
 Console.WriteLine("Введите число строк");
 int row = Convert.ToInt32(Console.ReadLine());
-Console.WriteLine("Введите число столбоц");
+Console.WriteLine("Введите число столбцов");
 int column = Convert.ToInt32(Console.ReadLine());
-int[,] matrix = new int[row, column];
-matrix = CreateMatrix(row, column);
-PrintMatrix(matrix);
-Console.WriteLine($"Номер строки с наименьшей суммой элементов = {MinSumInRows(matrix)}");
+if (row > 0 && column > 0)
+{
+    int[,] matrix = new int[row, column];
+    matrix = CreateMatrix(row, column);
+    PrintMatrix(matrix);
+    Console.WriteLine($"Номер строки с наименьшей суммой элементов = {MinSumInRows(matrix)}");
+}
+else Console.WriteLine("Число строк и столбцов должно быть больше 0");
